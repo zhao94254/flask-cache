@@ -281,7 +281,7 @@ class Cache(object):
             @functools.wraps(f)
             def decorated_function(*args, **kwargs):
                 #: Bypass the cache entirely.
-                if callable(unless) and unless() is True:
+                if callable(unless) and unless(*args, **kwargs) is True:
                     return f(*args, **kwargs)
 
                 try:
